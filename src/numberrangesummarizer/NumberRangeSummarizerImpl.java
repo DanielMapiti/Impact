@@ -11,21 +11,19 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
         Collection<Integer> inputCollection= new ArrayList<Integer>();
 
         String[] strInputArray = input.split(",");
-        try {
+        //Remove duplicates
             for (String str : strInputArray) {
                 if (!inputCollection.contains(Integer.parseInt(str))) {
                     inputCollection.add(Integer.parseInt(str));
                 }
             }
-        }catch (Exception e){
-            System.out.println("Invalid input.");
-        }
+
+        //returns a sorted collection
         return inputCollection.stream().sorted().collect(Collectors.toList());
     }
 
     @Override
     public String summarizeCollection(Collection<Integer> input) {
-
         if (input.size()==1){
             return Integer.toString((Integer) input.toArray()[0]);
         }
@@ -35,6 +33,7 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
         int current,next, start = 0, end=0;
         boolean seq =false;
         int secondLast = (int)inputArray[inputArray.length-2];
+
         for (int i=0; i < inputArray.length-1;i++){
             current = (int) inputArray[i];
             next = (int) inputArray[i+1];
@@ -55,6 +54,7 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
             }
 
         }
+        //checks for the last element
         if (secondLast+1 == (int)inputArray[inputArray.length-1]){
             end = (int)inputArray[inputArray.length-1];
             results.append(Integer.toString(start) + "-" + Integer.toString(end));
@@ -62,7 +62,6 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
         else{
             results.append(Integer.toString((int)inputArray[inputArray.length-1]));
         }
-
 
         return results.toString();
     }
