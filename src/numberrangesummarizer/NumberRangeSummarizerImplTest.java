@@ -30,10 +30,19 @@ class NumberRangeSummarizerImplTest {
 
     //Test if invalid input throws exception
     @Test
-    public void testInput(){
+    public void testInput() throws NumberFormatException{
         NumberRangeSummarizerImpl numberRangeSummarizerObj = new NumberRangeSummarizerImpl();
         String input= "a,24,31" ;
-        Throwable exception = assertThrows(NumberFormatException.class,
+        assertThrows(NumberFormatException.class,
+                ()->{numberRangeSummarizerObj.collect(input);} );
+    }
+
+    //Test if empty input throws exception
+    @Test
+    public void testEmptyInput(){
+        NumberRangeSummarizerImpl numberRangeSummarizerObj = new NumberRangeSummarizerImpl();
+        String input= "" ;
+         assertThrows(NumberFormatException.class,
                 ()->{numberRangeSummarizerObj.collect(input);} );
     }
 

@@ -9,21 +9,22 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
     @Override
     public Collection<Integer> collect(String input) {
         Collection<Integer> inputCollection= new ArrayList<Integer>();
-
         String[] strInputArray = input.split(",");
-        //Remove duplicates
+            //Remove duplicates
             for (String str : strInputArray) {
                 if (!inputCollection.contains(Integer.parseInt(str))) {
                     inputCollection.add(Integer.parseInt(str));
                 }
             }
-
         //returns a sorted collection
         return inputCollection.stream().sorted().collect(Collectors.toList());
     }
 
     @Override
     public String summarizeCollection(Collection<Integer> input) {
+        if (input.size()==0){
+            throw new ArrayIndexOutOfBoundsException("Input Empty.");
+        }
         if (input.size()==1){
             return Integer.toString((Integer) input.toArray()[0]);
         }

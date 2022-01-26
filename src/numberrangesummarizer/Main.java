@@ -5,6 +5,6 @@ public class Main {
         // write your code here
         String input = "";
         NumberRangeSummarizerImpl obj = new NumberRangeSummarizerImpl();
-        System.out.println(obj.summarizeCollection(obj.collect(input)));
+        System.out.println(obj.collect(input));
     }
 }
