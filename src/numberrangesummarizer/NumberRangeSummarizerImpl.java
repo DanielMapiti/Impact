@@ -60,7 +60,7 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
             results.append(Integer.toString(start) + "-" + Integer.toString(end));
         }
         else{
-            results.append(Integer.toString((int)inputArray[inputArray.length-1])+", ");
+            results.append(Integer.toString((int)inputArray[inputArray.length-1]));
         }
 
 
